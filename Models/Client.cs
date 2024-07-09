@@ -19,5 +19,15 @@ namespace AvaliacaoBailarinaPreparada.Models
         [EmailAddress(ErrorMessage = "E-mail inválido")]
         [DisplayName("E-mail")]
         public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Insira a idade")]
+        [Range(0, 100, ErrorMessage = "A idade deve ser estar entre 0 e 100")]
+        [DisplayName("Idade")]
+        public int Age { get; set; }
+
+        [Required(ErrorMessage = "Insira o gênero")]
+        [StringLength(20, ErrorMessage = "O gênero deve conter até 20 caracteres")]
+        [DisplayName("Gênero")]
+        public string Gender { get; set; } = string.Empty;
     }
 }

@@ -12,9 +12,9 @@ namespace AvaliacaoBailarinaPreparada.Pages_Clients
 {
     public class CreateModel : PageModel
     {
-        private readonly AvaliacaoBailarinaPreparada.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(AvaliacaoBailarinaPreparada.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }

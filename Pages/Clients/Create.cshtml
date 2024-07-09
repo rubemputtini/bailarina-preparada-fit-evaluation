@@ -5,24 +5,41 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Client</h4>
+<h1>Cadastrar Aluno</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Campo Nome -->
             <div class="form-group">
                 <label asp-for="Client.Name" class="control-label"></label>
                 <input asp-for="Client.Name" class="form-control" />
                 <span asp-validation-for="Client.Name" class="text-danger"></span>
             </div>
+
+            <!-- Campo E-mail -->
             <div class="form-group">
                 <label asp-for="Client.Email" class="control-label"></label>
                 <input asp-for="Client.Email" class="form-control" />
                 <span asp-validation-for="Client.Email" class="text-danger"></span>
             </div>
+
+            <!-- Campo Idade -->
+            <div class="form-group">
+                <label asp-for="Client.Age" class="control-label"></label>
+                <input asp-for="Client.Age" class="form-control" />
+                <span asp-validation-for="Client.Age" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Gênero -->
+            <div class="form-group">
+                <label asp-for="Client.Gender" class="control-label"></label>
+                <input asp-for="Client.Gender" class="form-control" />
+                <span asp-validation-for="Client.Gender" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -31,6 +48,6 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Voltar a lista</a>
 </div>
 

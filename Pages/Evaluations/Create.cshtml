@@ -5,23 +5,52 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create Evaluation</h1>
 
 <h4>Evaluation</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Evaluation.AssessmentDate" class="control-label"></label>
                 <input asp-for="Evaluation.AssessmentDate" class="form-control" />
                 <span asp-validation-for="Evaluation.AssessmentDate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Evaluation.ClientId" class="control-label"></label>
-                <select asp-for="Evaluation.ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
+                <select asp-for="Evaluation.ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
             </div>
+
+            <div>
+                <h3>Evaluation Items</h3>
+                @for (int i = 0; i < Model.Evaluation.EvaluationItems.Count; i++)
+                {
+                    <div class="form-group">
+                        <label class="control-label">@Model.Evaluation.EvaluationItems[i].Exercise.Name</label>
+                        <input type="hidden" asp-for="Evaluation.EvaluationItems[i].ExerciseId" />
+                        <input type="hidden" asp-for="Evaluation.EvaluationItems[i].Exercise.Name" />
+                        <input type="hidden" asp-for="Evaluation.EvaluationItems[i].Exercise.Category" />
+
+                        @if (Model.Evaluation.EvaluationItems[i].Exercise.Category == "FMS")
+                        {
+                            <label asp-for="Evaluation.EvaluationItems[i].Score" class="control-label"></label>
+                            <input asp-for="Evaluation.EvaluationItems[i].Score" class="form-control" min="0" max="3" />
+                            <span asp-validation-for="Evaluation.EvaluationItems[i].Score" class="text-danger"></span>
+                        }
+                        else if (Model.Evaluation.EvaluationItems[i].Exercise.Category == "Capacidades Fisicas")
+                        {
+                            <label asp-for="Evaluation.EvaluationItems[i].Score" class="control-label"></label>
+                            <input asp-for="Evaluation.EvaluationItems[i].Score" class="form-control" min="1" max="50" />
+                            <span asp-validation-for="Evaluation.EvaluationItems[i].Score" class="text-danger"></span>
+                        }
+                    </div>
+                }
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -32,4 +61,3 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
-
